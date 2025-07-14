@@ -1,0 +1,9 @@
+[book]
+title  = "A confiança dos usuários em Sistemas de IA"
+authors = ["David Prado", "Lucas Moura", "Luis Thiago Rabello"]
+language = "pt-BR"
+multilingual = false
+
+[output.html]
+default-theme = "ayu"
+mathjax-support = false
