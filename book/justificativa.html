@@ -36,6 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "ayu";
             const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc.js"></script>
@@ -92,10 +93,13 @@
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
+                sidebar_toggle.checked = false;
             }
-            sidebar_toggle.checked = sidebar === 'visible';
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -146,7 +150,12 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -167,14 +176,16 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="justificativa"><a class="header" href="#justificativa">Justificativa</a></h1>
-<p>Estudos recentes destacam que <strong>confiança</strong> é um fator central para a adoção responsável de tecnologias de IA. A percepção de uma "caixa-preta" compromete o entendimento dos resultados e pode levar à rejeição do sistema. :contentReference[oaicite:2]{index=2}</p>
-<p>Portanto, compreender <strong>quais fatores</strong> influenciam a confiança dos usuários é essencial para orientar o <em>design</em> ético, transparente e centrado no humano.</p>
+<p>O avanço da Inteligência Artificial (IA) levanta preocupações sobre privacidade, vieses e perda de controle humano, especialmente com a popularização de modelos generativos, o que afeta diretamente a confiança dos usuários (Sargent et al., 2024). A confiança é um elemento central para a adoção responsável da IA e é influenciada por uma combinação de fatores técnicos, socioéticos e características individuais dos usuários, indo além do mero desempenho do sistema (BACH et al., 2024).</p>
+<p>A natureza de "caixa-preta" de muitos sistemas de IA compromete a capacidade dos usuários de compreender e avaliar seus resultados (BACH et al., 2024; LIAO; SUNDAR, 2022). Por isso, é crucial que o design dos sistemas de IA inclua "pistas de confiabilidade" para ajudar os usuários a formar julgamentos adequados, evitando tanto a confiança excessiva quanto a desconfiança infundada (LIAO; SUNDAR, 2022). A adoção de princípios éticos explícitos, como transparência, justiça e responsabilidade, é fundamental, conforme reforçam a UNESCO (2021) e estudos que mostram a valorização pública desses múltiplos critérios éticos (KIESLICH; KELLER; STARKE, 2022).</p>
+<p>Este estudo foca em usuários não especialistas, que interagem com a IA no dia a dia e, por não terem conhecimento técnico aprofundado, dependem de sinais indiretos para formar sua confiança (BACH et al., 2024; LIAO; SUNDAR, 2022). A construção de sistemas confiáveis exige uma abordagem que abranja todo o ciclo de vida da tecnologia, desde a coleta de dados até o monitoramento contínuo, integrando robustez, explicabilidade, justiça e privacidade em todas as fases (Li et al., 2022).</p>
+<p>Como destacam Li et al. (2022), uma falha em qualquer etapa pode comprometer a confiança no sistema inteiro, o que reforça a importância de práticas interdisciplinares e avaliação contínua. Portanto, investigar a percepção desses usuários é crucial para desenvolver um design de IA ético, centrado no humano e alinhado às expectativas da sociedade.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="motivacao.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="introducao_contextualizacao.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
@@ -188,7 +199,7 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="motivacao.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="introducao_contextualizacao.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
@@ -232,6 +243,7 @@
         <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
+
 
 
     </div>
