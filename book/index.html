@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Introdução - A confiança dos usuários em Sistemas de IA</title>
+        <title>Introdução e Contextualização Teórica - A confiança dos usuários em Sistemas de IA</title>
 
 
         <!-- Custom HTML head -->
@@ -36,6 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "ayu";
             const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc.js"></script>
@@ -92,10 +93,13 @@
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
+                sidebar_toggle.checked = false;
             }
-            sidebar_toggle.checked = sidebar === 'visible';
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -146,7 +150,12 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -166,16 +175,18 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="introdução"><a class="header" href="#introdução">Introdução</a></h1>
-<p>A evolução dos sistemas de Inteligência Artificial (IA) — de <strong>sistemas especialistas</strong> à era de <strong>assistentes e agentes autônomos</strong> — ampliou o impacto dessas tecnologias na vida cotidiana. Entretanto, a <strong>complexidade</strong> e a <strong>opacidade</strong> dos algoritmos aumentam a dificuldade de prever o seu comportamento e afetam a confiança dos usuários. :contentReference[oaicite:0]{index=0}</p>
-<p>Além disso, preocupações éticas como privacidade, vieses e perda de controle humano emergem como barreiras à aceitação de sistemas de IA. :contentReference[oaicite:1]{index=1}</p>
+                        <h1 id="introdução-e-contextualização-teórica"><a class="header" href="#introdução-e-contextualização-teórica">Introdução e Contextualização Teórica</a></h1>
+<p>A Inteligência Artificial (IA) tornou-se uma força transformadora no cotidiano, presente em setores como saúde, transporte e educação. Originada na década de 1950, a IA evoluiu de sistemas básicos para complexos assistentes e agentes autônomos que influenciam diretamente a agência humana e a tomada de decisões (AFROOGH et al., 2024). Embora promova eficiência e inovação, essa expansão tecnológica levanta novas e significativas questões éticas e sociais.</p>
+<p>Apesar de seus benefícios, a aceitação da IA é dificultada pela desconfiança dos usuários. Preocupações com privacidade, discriminação algorítmica e a perda de autonomia humana afetam negativamente a confiança (SARGENT et al., 2024). O uso indevido de dados, a falta de transparência em decisões automatizadas e a disseminação de vieses reforçam essa desconfiança generalizada (BACH et al., 2024). Um relatório da UNESCO também alerta que, sem uma governança ética, a IA pode aprofundar desigualdades e ameaçar direitos humanos fundamentais (UNESCO, 2021).</p>
+<p>A complexidade e a opacidade dos sistemas de IA, juntamente com sua capacidade de aprendizado autônomo, dificultam a previsão e a compreensão de seu comportamento, agravando a desconfiança (BACH et al., 2024). A confiança em sistemas de IA depende da correta interpretação de sinais como explicações claras e interações transparentes. A falta desses elementos pode levar a julgamentos equivocados e ao uso inadequado da tecnologia (LIAO; SUNDAR, 2022).</p>
+<p>Para construir confiança, é essencial adotar um design ético e centrado no ser humano, incorporando princípios como transparência, justiça, responsabilidade e explicabilidade (KIESLICH; KELLER; STARKE, 2022). A percepção pública apoia a aplicação equilibrada desses princípios, mesmo que existam compromissos técnicos, como o trade-off entre explicabilidade e precisão. Iniciativas globais, como a Recomendação da UNESCO (2021), reforçam a necessidade de um desenvolvimento tecnológico que respeite a dignidade humana e a equidade social.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
 
-                            <a rel="next prefetch" href="motivacao.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="justificativa.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -186,7 +197,7 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
 
-                    <a rel="next prefetch" href="motivacao.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="justificativa.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -226,6 +237,7 @@
         <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
+
 
 
     </div>

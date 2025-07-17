@@ -37,6 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "ayu";
             const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc.js"></script>
@@ -93,10 +94,13 @@
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
+                sidebar_toggle.checked = false;
             }
-            sidebar_toggle.checked = sidebar === 'visible';
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -147,7 +151,12 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -167,29 +176,29 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="introdução"><a class="header" href="#introdução">Introdução</a></h1>
-<p>A evolução dos sistemas de Inteligência Artificial (IA) — de <strong>sistemas especialistas</strong> à era de <strong>assistentes e agentes autônomos</strong> — ampliou o impacto dessas tecnologias na vida cotidiana. Entretanto, a <strong>complexidade</strong> e a <strong>opacidade</strong> dos algoritmos aumentam a dificuldade de prever o seu comportamento e afetam a confiança dos usuários. :contentReference[oaicite:0]{index=0}</p>
-<p>Além disso, preocupações éticas como privacidade, vieses e perda de controle humano emergem como barreiras à aceitação de sistemas de IA. :contentReference[oaicite:1]{index=1}</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="motivação"><a class="header" href="#motivação">Motivação</a></h1>
-<p>A rápida difusão de sistemas baseados em Inteligência Artificial (IA) em contextos sensíveis — como saúde, finanças, educação e segurança — transformou esses artefatos em participantes ativos de decisões humanas. No entanto, essa transformação não foi acompanhada por um avanço proporcional nas formas de tornar a IA <strong>compreensível, transparente e confiável para o público em geral</strong> (SARGENT et al., 2022; UNESCO, 2021).</p>
-<p>Diversos estudos apontam que usuários não especialistas, como estudantes, consumidores ou cidadãos comuns, frequentemente interagem com sistemas de IA sem compreender suas lógicas internas ou critérios de decisão (AFROOGH et al., 2024; LIAO &amp; SUNDAR, 2022). Isso os coloca em uma posição de <strong>vulnerabilidade cognitiva</strong>, semelhante ao que ocorre com outros grupos hipervulneráveis no meio digital, como os idosos (GUEDES et al., 2023; MENDONÇA et al., 2024).</p>
-<p>Essa <strong>vulnerabilidade à opacidade algorítmica</strong> não se restringe à falta de conhecimento técnico. Ela é ampliada por decisões de design que priorizam eficiência ou persuasão, em detrimento da explicabilidade, controle e participação do usuário. Assim como interfaces digitais podem induzir idosos ao erro ou à adesão acrítica, os sistemas de IA podem <strong>conduzir o usuário a confiar excessivamente ou, ao contrário, rejeitar injustificadamente suas recomendações</strong>, resultando em prejuízos pessoais ou sociais (KIESLICH et al., 2022; BACH et al., 2024).</p>
-<p>Além disso, <strong>a confiança não é neutra</strong>: ela é construída por fatores técnicos (explicabilidade, acurácia), sociais (percepção de justiça, responsabilidade) e afetivos (experiências prévias, empatia com o sistema). Quando ignorados, esses fatores agravam a sensação de alienação e risco — especialmente em populações sem formação técnica — e dificultam a adoção ética e informada da IA.</p>
-<p>Diante desse cenário, entender <strong>por que usuários confiam (ou não) em sistemas de IA</strong>, e <strong>como essa confiança pode ser comprometida ou reforçada</strong>, não é apenas uma questão técnica, mas social e ética. Assim como no caso da população idosa, urge investigar os mecanismos que ampliam a vulnerabilidade dos usuários e identificar estratégias de proteção, educação e <em>design</em> centrado no humano. A Engenharia de Requisitos, ao integrar diretrizes que consideram aspectos éticos, sociais e técnicos da IA, torna-se um campo fundamental para enfrentar esses desafios e reequilibrar a relação entre humanos e sistemas inteligentes (DAUN et al., 2022; BATISTA et al., 2024).</p>
+                        <h1 id="introdução-e-contextualização-teórica"><a class="header" href="#introdução-e-contextualização-teórica">Introdução e Contextualização Teórica</a></h1>
+<p>A Inteligência Artificial (IA) tornou-se uma força transformadora no cotidiano, presente em setores como saúde, transporte e educação. Originada na década de 1950, a IA evoluiu de sistemas básicos para complexos assistentes e agentes autônomos que influenciam diretamente a agência humana e a tomada de decisões (AFROOGH et al., 2024). Embora promova eficiência e inovação, essa expansão tecnológica levanta novas e significativas questões éticas e sociais.</p>
+<p>Apesar de seus benefícios, a aceitação da IA é dificultada pela desconfiança dos usuários. Preocupações com privacidade, discriminação algorítmica e a perda de autonomia humana afetam negativamente a confiança (SARGENT et al., 2024). O uso indevido de dados, a falta de transparência em decisões automatizadas e a disseminação de vieses reforçam essa desconfiança generalizada (BACH et al., 2024). Um relatório da UNESCO também alerta que, sem uma governança ética, a IA pode aprofundar desigualdades e ameaçar direitos humanos fundamentais (UNESCO, 2021).</p>
+<p>A complexidade e a opacidade dos sistemas de IA, juntamente com sua capacidade de aprendizado autônomo, dificultam a previsão e a compreensão de seu comportamento, agravando a desconfiança (BACH et al., 2024). A confiança em sistemas de IA depende da correta interpretação de sinais como explicações claras e interações transparentes. A falta desses elementos pode levar a julgamentos equivocados e ao uso inadequado da tecnologia (LIAO; SUNDAR, 2022).</p>
+<p>Para construir confiança, é essencial adotar um design ético e centrado no ser humano, incorporando princípios como transparência, justiça, responsabilidade e explicabilidade (KIESLICH; KELLER; STARKE, 2022). A percepção pública apoia a aplicação equilibrada desses princípios, mesmo que existam compromissos técnicos, como o trade-off entre explicabilidade e precisão. Iniciativas globais, como a Recomendação da UNESCO (2021), reforçam a necessidade de um desenvolvimento tecnológico que respeite a dignidade humana e a equidade social.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="justificativa"><a class="header" href="#justificativa">Justificativa</a></h1>
-<p>Estudos recentes destacam que <strong>confiança</strong> é um fator central para a adoção responsável de tecnologias de IA. A percepção de uma "caixa-preta" compromete o entendimento dos resultados e pode levar à rejeição do sistema. :contentReference[oaicite:2]{index=2}</p>
-<p>Portanto, compreender <strong>quais fatores</strong> influenciam a confiança dos usuários é essencial para orientar o <em>design</em> ético, transparente e centrado no humano.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="objetivos-da-pesquisa"><a class="header" href="#objetivos-da-pesquisa">Objetivos da Pesquisa</a></h1>
+<p>O avanço da Inteligência Artificial (IA) levanta preocupações sobre privacidade, vieses e perda de controle humano, especialmente com a popularização de modelos generativos, o que afeta diretamente a confiança dos usuários (Sargent et al., 2024). A confiança é um elemento central para a adoção responsável da IA e é influenciada por uma combinação de fatores técnicos, socioéticos e características individuais dos usuários, indo além do mero desempenho do sistema (BACH et al., 2024).</p>
+<p>A natureza de "caixa-preta" de muitos sistemas de IA compromete a capacidade dos usuários de compreender e avaliar seus resultados (BACH et al., 2024; LIAO; SUNDAR, 2022). Por isso, é crucial que o design dos sistemas de IA inclua "pistas de confiabilidade" para ajudar os usuários a formar julgamentos adequados, evitando tanto a confiança excessiva quanto a desconfiança infundada (LIAO; SUNDAR, 2022). A adoção de princípios éticos explícitos, como transparência, justiça e responsabilidade, é fundamental, conforme reforçam a UNESCO (2021) e estudos que mostram a valorização pública desses múltiplos critérios éticos (KIESLICH; KELLER; STARKE, 2022).</p>
+<p>Este estudo foca em usuários não especialistas, que interagem com a IA no dia a dia e, por não terem conhecimento técnico aprofundado, dependem de sinais indiretos para formar sua confiança (BACH et al., 2024; LIAO; SUNDAR, 2022). A construção de sistemas confiáveis exige uma abordagem que abranja todo o ciclo de vida da tecnologia, desde a coleta de dados até o monitoramento contínuo, integrando robustez, explicabilidade, justiça e privacidade em todas as fases (Li et al., 2022).</p>
+<p>Como destacam Li et al. (2022), uma falha em qualquer etapa pode comprometer a confiança no sistema inteiro, o que reforça a importância de práticas interdisciplinares e avaliação contínua. Portanto, investigar a percepção desses usuários é crucial para desenvolver um design de IA ético, centrado no humano e alinhado às expectativas da sociedade.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="objetivos"><a class="header" href="#objetivos">Objetivos</a></h1>
 <h2 id="objetivo-geral"><a class="header" href="#objetivo-geral">Objetivo Geral</a></h2>
-<p>Investigar os fatores que influenciam a confiança em sistemas de IA utilizados por pessoas não especialistas.</p>
+<p>Investigar os fatores que influenciam a confiança dos usuários em sistemas baseados em Inteligência Artificial, analisando suas percepções, experiências e expectativas em relação à transparência, explicabilidade, responsabilidade e outros princípios éticos aplicados ao design de sistemas.</p>
 <h2 id="objetivos-específicos"><a class="header" href="#objetivos-específicos">Objetivos Específicos</a></h2>
 <ul>
-<li>Mapear dimensões de confiança com base em aspectos técnicos, socioéticos e características dos usuários;</li>
-<li>Analisar preocupações éticas, riscos percebidos e influências externas (como mídia);</li>
-<li>Propor diretrizes para o design ético e centrado no humano de sistemas de IA.</li>
+<li>Mapear as principais definições e dimensões da confiança em sistemas de IA, considerando aspectos técnicos, socioéticos e características dos usuários, conforme identificado em estudos recentes (BACH et al., 2024).</li>
+<li>Analisar como fatores externos, como preocupações éticas, riscos percebidos e exposição midiática, afetam a formação da confiança dos usuários (SARGENT et al., 2024).</li>
+<li>Investigar o impacto da opacidade e da falta de explicabilidade dos sistemas de IA na percepção de confiança dos usuários (BACH et al., 2024; LIAO; SUNDAR, 2022).</li>
+<li>Explorar o papel das estratégias de comunicação e design na construção de sinais de confiabilidade percebida, como proposto no modelo MATCH (LIAO; SUNDAR, 2022).</li>
+<li>Propor diretrizes para o design ético e centrado no humano de sistemas de IA, fundamentadas nos princípios de transparência, responsabilidade, justiça e inclusão destacados pela UNESCO (2021) e por Kieslich, Keller e Starke (2022).</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="análise-da-confiança-dos-usuários-em-sistemas-baseados-em-inteligência-artificial-ia"><a class="header" href="#análise-da-confiança-dos-usuários-em-sistemas-baseados-em-inteligência-artificial-ia">Análise da Confiança dos Usuários em Sistemas Baseados em Inteligência Artificial (IA)</a></h1>
-<h2 id="introdução-1"><a class="header" href="#introdução-1">Introdução</a></h2>
+<h2 id="introdução"><a class="header" href="#introdução">Introdução</a></h2>
 <p>A crescente integração dos sistemas baseados em Inteligência Artificial (IA) no cotidiano dos usuários trouxe à tona desafios importantes relacionados à confiança e à percepção desses sistemas. Com base em um questionário estruturado, a pesquisa teve como objetivo compreender a forma como estudantes de áreas não relacionadas diretamente à computação percebem e avaliam a confiança em sistemas como assistentes virtuais, tradutores automáticos e sistemas de recomendação, visando propor melhorias no design e comunicação desses sistemas para torná-los mais éticos e transparentes.</p>
 <h2 id="perfil-dos-respondentes"><a class="header" href="#perfil-dos-respondentes">Perfil dos Respondentes</a></h2>
 <p>Os respondentes da pesquisa são estudantes universitários que não estão vinculados diretamente à área de tecnologia. Informações demográficas, como idade, curso e período acadêmico, forneceram um contexto necessário para compreender melhor o perfil dos usuários e como suas percepções podem variar com diferentes níveis de maturidade acadêmica e experiências de vida.</p>
@@ -257,37 +266,20 @@
 <p>Este é um <strong>estudo exploratório qualitativo</strong> com duas técnicas de coleta:</p>
 <ul>
 <li><strong>Entrevistas semiestruturadas</strong></li>
-<li><strong>Questionários (abertos e fechados)</strong> :contentReference[oaicite:5]{index=5}</li>
+<li><strong>Questionários (abertos e fechados)</strong></li>
 </ul>
 <h3 id="participantes"><a class="header" href="#participantes">Participantes</a></h3>
 <p>Estudantes de graduação <strong>fora da área de computação</strong> que utilizam alguma ferramenta de IA.</p>
 <h3 id="análise-de-dados"><a class="header" href="#análise-de-dados">Análise de Dados</a></h3>
-<p>Empregou-se <strong>análise de conteúdo temática</strong> baseada em dimensões de confiança já consolidadas na literatura. :contentReference[oaicite:6]{index=6}</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="termo-de-consentimento-resumo"><a class="header" href="#termo-de-consentimento-resumo">Termo de Consentimento (Resumo)</a></h1>
-<h2 id="título-da-pesquisa"><a class="header" href="#título-da-pesquisa">Título da pesquisa</a></h2>
-<p><strong>A confiança dos usuários nos sistemas baseados em Inteligência Artificial: fatores, percepções e implicações para o design ético de sistemas</strong></p>
-<h2 id="participação"><a class="header" href="#participação">Participação</a></h2>
-<p>Voluntária, com possibilidade de desistência a qualquer momento.</p>
-<h2 id="objetivo"><a class="header" href="#objetivo">Objetivo</a></h2>
-<p>Investigar como estudantes de cursos fora da computação percebem e avaliam a confiança em sistemas de IA.</p>
-<h2 id="procedimentos"><a class="header" href="#procedimentos">Procedimentos</a></h2>
-<p>Questionário com duração média de 10 a 15 minutos, com possibilidade de entrevista adicional.</p>
-<h2 id="confidencialidade"><a class="header" href="#confidencialidade">Confidencialidade</a></h2>
-<p>Os dados serão utilizados apenas para fins acadêmicos, garantindo o anonimato dos participantes.</p>
-<h2 id="contato"><a class="header" href="#contato">Contato</a></h2>
-<ul>
-<li><a href="mailto:david.prado@icomp.ufam.edu.br">david.prado@icomp.ufam.edu.br</a></li>
-<li><a href="mailto:lucas.moura@icomp.ufam.edu.br">lucas.moura@icomp.ufam.edu.br</a></li>
-<li><a href="mailto:ltsr@icomp.ufam.edu.br">ltsr@icomp.ufam.edu.br</a></li>
-</ul>
+<p>Empregou-se <strong>análise de conteúdo temática</strong> baseada em dimensões de confiança já consolidadas na literatura.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="cronograma-da-pesquisa"><a class="header" href="#cronograma-da-pesquisa">Cronograma da Pesquisa</a></h1>
 <div class="table-wrapper"><table><thead><tr><th>Etapa</th><th>Período</th></tr></thead><tbody>
 <tr><td>Revisão bibliográfica</td><td>Maio – Junho</td></tr>
 <tr><td>Elaboração dos instrumentos</td><td>Junho</td></tr>
-<tr><td>Aplicação dos questionários</td><td>Julho – Agosto</td></tr>
-<tr><td>Análise qualitativa</td><td>Setembro – Outubro</td></tr>
-<tr><td>Sistematização dos resultados</td><td>Outubro – Novembro</td></tr>
-<tr><td>Redação final e publicação</td><td>Novembro – Dezembro</td></tr>
+<tr><td>Aplicação dos questionários</td><td>Junho – Julho</td></tr>
+<tr><td>Análise qualitativa</td><td>Julho</td></tr>
+<tr><td>Sistematização dos resultados</td><td>Julho</td></tr>
+<tr><td>Redação final e publicação</td><td>Julho</td></tr>
 </tbody></table>
 </div><div style="break-before: page; page-break-before: always;"></div><h1 id="resultados-da-pesquisa"><a class="header" href="#resultados-da-pesquisa">Resultados da Pesquisa</a></h1>
 <p>Este capítulo apresenta os principais achados do questionário aplicado com estudantes universitários não pertencentes à área de computação, destacando padrões de uso, percepções e fatores que influenciam a confiança em sistemas de Inteligência Artificial (IA).</p>
@@ -326,16 +318,13 @@
 <h2 id="questões-Éticas-e-expectativas"><a class="header" href="#questões-Éticas-e-expectativas">Questões Éticas e Expectativas</a></h2>
 <p>A maioria dos participantes (65%) acredita que existem riscos éticos significativos no uso de IA, como decisões enviesadas ou injustas. No entanto, 35% ainda não souberam opinar sobre essas questões, revelando uma lacuna de compreensão que pode ser abordada com educação digital e transparência tecnológica.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="referências"><a class="header" href="#referências">Referências</a></h1>
-<p>A pesquisa utilizou como base estudos recentes, como:</p>
-<ul>
-<li>Afroogh et al. (2024)</li>
-<li>Bach et al. (2024)</li>
-<li>Kieslich et al. (2022)</li>
-<li>Liao &amp; Sundar (2022)</li>
-<li>Li et al. (2022)</li>
-<li>Sargent et al. (2022, 2024)</li>
-<li>UNESCO (2021)</li>
-</ul>
+<p>AFROOGH, Saleh; AKBARI, Ali; MALONE, Emmie; KARGAR, Mohammadali; ALAMBEIGI, Hananeh. Trust in AI: progress, challenges, and future directions. Humanities and Social Sciences Communications, v. 11, 2024. DOI: 10.1057/s41599-024-04044-8.</p>
+<p>BACH, Tita Alissa; KHAN, Amna; HALLOCK, Harry; BELTRÃO, Gabriela; SOUSA, Sonia. A Systematic Literature Review of User Trust in AI-Enabled Systems: An HCI Perspective. International Journal of Human–Computer Interaction, v. 40, n. 5, p. 1251–1266, 2024. DOI: 10.1080/10447318.2022.2138826.</p>
+<p>KIESLICH, Kimon; KELLER, Birte; STARKE, Christopher. Artificial intelligence ethics by design: Evaluating public perception on the importance of ethical design principles of artificial intelligence. Big Data &amp; Society, 2022. DOI: 10.1177/20539517221092956.</p>
+<p>LIAO, Q. Vera; SUNDAR, S. Shyam. Designing for Responsible Trust in AI Systems: A Communication Perspective. In: Proceedings of the 2022 ACM Conference on Fairness, Accountability, and Transparency (FAccT '22). ACM, 2022. DOI: 10.1145/3531146.3533182.</p>
+<p>LI, Bo; QI, Peng; LIU, Bo; DI, Shuai; LIU, Jingen; PEI, Jiquan; YI, Jinfeng; ZHOU, Bowen. Trustworthy AI: From Principles to Practices. ACM Computing Surveys, 2022. Disponível em: https://arxiv.org/abs/2110.01167. Acesso em: 27 abr. 2025.</p>
+<p>SARGENT, Carol Springer; KOOHANG, Alex; FLOYD, Kevin; KILBURN, Richard. Artificial Intelligence: Ethical concerns, trust, and risk. Issues in Information Systems, v. 25, n. 2, p. 71-83, 2024. DOI: 10.48009/2_iis_2024_106.</p>
+<p>UNESCO. Recomendação sobre a Ética da Inteligência Artificial. Paris: UNESCO, 2021. Disponível em: https://unesdoc.unesco.org/ark:/48223/pf0000381137_por.</p>
 
                     </main>
 
@@ -393,6 +382,7 @@
             window.setTimeout(window.print, 100);
         });
         </script>
+
 
     </div>
     </body>

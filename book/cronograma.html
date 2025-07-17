@@ -36,6 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "ayu";
             const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc.js"></script>
@@ -92,10 +93,13 @@
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
+                sidebar_toggle.checked = false;
             }
-            sidebar_toggle.checked = sidebar === 'visible';
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -146,7 +150,12 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -170,17 +179,17 @@
 <div class="table-wrapper"><table><thead><tr><th>Etapa</th><th>Período</th></tr></thead><tbody>
 <tr><td>Revisão bibliográfica</td><td>Maio – Junho</td></tr>
 <tr><td>Elaboração dos instrumentos</td><td>Junho</td></tr>
-<tr><td>Aplicação dos questionários</td><td>Julho – Agosto</td></tr>
-<tr><td>Análise qualitativa</td><td>Setembro – Outubro</td></tr>
-<tr><td>Sistematização dos resultados</td><td>Outubro – Novembro</td></tr>
-<tr><td>Redação final e publicação</td><td>Novembro – Dezembro</td></tr>
+<tr><td>Aplicação dos questionários</td><td>Junho – Julho</td></tr>
+<tr><td>Análise qualitativa</td><td>Julho</td></tr>
+<tr><td>Sistematização dos resultados</td><td>Julho</td></tr>
+<tr><td>Redação final e publicação</td><td>Julho</td></tr>
 </tbody></table>
 </div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="instrumentos.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="metodologia.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
@@ -194,7 +203,7 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="instrumentos.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="metodologia.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
@@ -238,6 +247,7 @@
         <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
+
 
 
     </div>

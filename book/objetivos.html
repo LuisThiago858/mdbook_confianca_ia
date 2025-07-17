@@ -36,6 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "ayu";
             const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc.js"></script>
@@ -92,10 +93,13 @@
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
+                sidebar_toggle.checked = false;
             }
-            sidebar_toggle.checked = sidebar === 'visible';
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -146,7 +150,12 @@
 
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -166,14 +175,16 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="objetivos-da-pesquisa"><a class="header" href="#objetivos-da-pesquisa">Objetivos da Pesquisa</a></h1>
+                        <h1 id="objetivos"><a class="header" href="#objetivos">Objetivos</a></h1>
 <h2 id="objetivo-geral"><a class="header" href="#objetivo-geral">Objetivo Geral</a></h2>
-<p>Investigar os fatores que influenciam a confiança em sistemas de IA utilizados por pessoas não especialistas.</p>
+<p>Investigar os fatores que influenciam a confiança dos usuários em sistemas baseados em Inteligência Artificial, analisando suas percepções, experiências e expectativas em relação à transparência, explicabilidade, responsabilidade e outros princípios éticos aplicados ao design de sistemas.</p>
 <h2 id="objetivos-específicos"><a class="header" href="#objetivos-específicos">Objetivos Específicos</a></h2>
 <ul>
-<li>Mapear dimensões de confiança com base em aspectos técnicos, socioéticos e características dos usuários;</li>
-<li>Analisar preocupações éticas, riscos percebidos e influências externas (como mídia);</li>
-<li>Propor diretrizes para o design ético e centrado no humano de sistemas de IA.</li>
+<li>Mapear as principais definições e dimensões da confiança em sistemas de IA, considerando aspectos técnicos, socioéticos e características dos usuários, conforme identificado em estudos recentes (BACH et al., 2024).</li>
+<li>Analisar como fatores externos, como preocupações éticas, riscos percebidos e exposição midiática, afetam a formação da confiança dos usuários (SARGENT et al., 2024).</li>
+<li>Investigar o impacto da opacidade e da falta de explicabilidade dos sistemas de IA na percepção de confiança dos usuários (BACH et al., 2024; LIAO; SUNDAR, 2022).</li>
+<li>Explorar o papel das estratégias de comunicação e design na construção de sinais de confiabilidade percebida, como proposto no modelo MATCH (LIAO; SUNDAR, 2022).</li>
+<li>Propor diretrizes para o design ético e centrado no humano de sistemas de IA, fundamentadas nos princípios de transparência, responsabilidade, justiça e inclusão destacados pela UNESCO (2021) e por Kieslich, Keller e Starke (2022).</li>
 </ul>
 
                     </main>
@@ -238,6 +249,7 @@
         <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
+
 
 
     </div>
